@@ -101,5 +101,74 @@ document.getElementById('color-3').addEventListener('click',()=>{
 
         }
     })
+    
+})
+document.getElementById('color-4').addEventListener('click',()=>{
+    document.getElementsByClassName('color-box')[0].style['grid-template-rows']='5fr 4fr 3fr '  
+    document.getElementsByClassName('drop-down')[0].style.visibility = 'hidden'
+    randomhex = colorname[randomnumber(0, colorname.length - 1)]['hex-code']
+    randomrgb = hextorgb(randomhex)
+    randomhsl = rgbToHsl(randomrgb)
+    analog1 = analogous(rgbToHsl([complementary(randomhsl)[0],complementary(randomhsl)[1],complementary(randomhsl)[2]]),1)[0]
+    document.getElementById('clr1').style.backgroundColor = `rgb(${complementary(randomhsl)[0]}%,${complementary(randomhsl)[1]}%,${complementary(randomhsl)[2]}%)`
+    document.getElementById('clr2').style.backgroundColor = randomhex
+    document.getElementById('clr3').style.backgroundColor = `rgb(${analog1[0]}%,${analog1[1]}%,${analog1[2]}%)`
+    document.body.addEventListener('keypress',(e)=>{
+        if(checkkeycode(e)){
+            randomhex = colorname[randomnumber(0, colorname.length - 1)]['hex-code']
+            randomrgb = hextorgb(randomhex)
+            randomhsl = rgbToHsl(randomrgb)
+            analog1 = analogous(rgbToHsl([complementary(randomhsl)[0],complementary(randomhsl)[1],complementary(randomhsl)[2]]),1)[0]
+            document.getElementById('clr1').style.backgroundColor = `rgb(${complementary(randomhsl)[0]}%,${complementary(randomhsl)[1]}%,${complementary(randomhsl)[2]}%)`
+            document.getElementById('clr2').style.backgroundColor = randomhex
+            document.getElementById('clr3').style.backgroundColor = `rgb(${analog1[0]}%,${analog1[1]}%,${analog1[2]}%)`
+        }
+    })
+})
+document.getElementById('color-5').addEventListener('click',()=>{
+    document.getElementsByClassName('color-box')[0].style['grid-template-rows']='5fr 4fr 3fr '  
+    document.getElementsByClassName('drop-down')[0].style.visibility = 'hidden'
+    randomhex = colorname[randomnumber(0, colorname.length - 1)]['hex-code']
+    randomrgb = hextorgb(randomhex)
+    randomhsl = rgbToHsl(randomrgb)
+    triadic_pallete = triadic(randomhsl)
+    document.getElementById('clr1').style.backgroundColor = `rgb(${triadic_pallete[0][0]}%,${triadic_pallete[0][1]}%,${triadic_pallete[0][2]}%)`
+    document.getElementById('clr2').style.backgroundColor = randomhex
+    document.getElementById('clr3').style.backgroundColor = `rgb(${triadic_pallete[1][0]}%,${triadic_pallete[1][1]}%,${triadic_pallete[1][2]}%)`
+    document.body.addEventListener('keypress',(e)=>{
+        if(checkkeycode(e)){
+            randomhex = colorname[randomnumber(0, colorname.length - 1)]['hex-code']
+            randomrgb = hextorgb(randomhex)
+            randomhsl = rgbToHsl(randomrgb)
+            triadic_pallete = triadic(randomhsl)
+            document.getElementById('clr1').style.backgroundColor = `rgb(${triadic_pallete[0][0]}%,${triadic_pallete[0][1]}%,${triadic_pallete[0][2]}%)`
+            document.getElementById('clr2').style.backgroundColor = randomhex
+            document.getElementById('clr3').style.backgroundColor = `rgb(${triadic_pallete[1][0]}%,${triadic_pallete[1][1]}%,${triadic_pallete[1][2]}%)`
+        }
+    })
+})
+document.getElementById('color-6').addEventListener('click',()=>{
+    document.getElementsByClassName('color-box')[0].style['grid-template-rows']='5fr 4fr 3fr 2fr'  
+    document.getElementsByClassName('drop-down')[0].style.visibility = 'hidden'
+    randomhex = colorname[randomnumber(0, colorname.length - 1)]['hex-code']
+    randomrgb = hextorgb(randomhex)
+    randomhsl = rgbToHsl(randomrgb)
+    tetradic_pallete = tetradic(randomhsl)
+    document.getElementById('clr1').style.backgroundColor = `rgb(${tetradic_pallete[0][0]}%,${tetradic_pallete[0][1]}%,${tetradic_pallete[0][2]}%)`
+    document.getElementById('clr1').style.backgroundColor = `rgb(${tetradic_pallete[1][0]}%,${tetradic_pallete[1][1]}%,${tetradic_pallete[1][2]}%)`
+    document.getElementById('clr1').style.backgroundColor = `rgb(${tetradic_pallete[2][0]}%,${tetradic_pallete[2][1]}%,${tetradic_pallete[2][2]}%)`
+    document.getElementById('clr1').style.backgroundColor = randomhex
+    document.body.addEventListener('keypress',(e)=>{
+        if(checkkeycode(e)){
+            randomhex = colorname[randomnumber(0, colorname.length - 1)]['hex-code']
+            randomrgb = hextorgb(randomhex)
+            randomhsl = rgbToHsl(randomrgb)
+            tetradic_pallete = tetradic(randomhsl)
+            document.getElementById('clr1').style.backgroundColor = `rgb(${tetradic_pallete[0][0]}%,${tetradic_pallete[0][1]}%,${tetradic_pallete[0][2]}%)`
+            document.getElementById('clr1').style.backgroundColor = `rgb(${tetradic_pallete[1][0]}%,${tetradic_pallete[1][1]}%,${tetradic_pallete[1][2]}%)`
+            document.getElementById('clr1').style.backgroundColor = `rgb(${tetradic_pallete[2][0]}%,${tetradic_pallete[2][1]}%,${tetradic_pallete[2][2]}%)`
+            document.getElementById('clr1').style.backgroundColor = randomhex
 
+        }
+    })
 })
