@@ -5,57 +5,81 @@ function getdata() {
         .then((data) => window.colorname = data)
 }
 getdata()
-function typehover() {
+typehover = function () {
     document.getElementsByClassName('drop-down')[0].style.visibility = 'visible'
 }
-function typehover2() {
+typehover2 = function () {
     document.getElementsByClassName('drop-down')[0].style.visibility = 'hidden'
 }
+checkkeycode = (e)=>{
+    if (e.keyCode ===32){
+        return true
+    }
+    else {
+        return false
+    }
+    }
+
+
 document.body.addEventListener('keypress', (e) => {
-    if (e.keyCode === 32) {
-        document.getElementById('clr1').style.backgroundColor = colorname[uniquearray(5, 0, colorname.length)[0]]['hex-code']
-        document.getElementById('clr2').style.backgroundColor = colorname[uniquearray(5, 0, colorname.length)[1]]['hex-code']
-        document.getElementById('clr3').style.backgroundColor = colorname[uniquearray(5, 0, colorname.length)[2]]['hex-code']
-        document.getElementById('clr4').style.backgroundColor = colorname[uniquearray(5, 0, colorname.length)[3]]['hex-code']
-        document.getElementById('clr5').style.backgroundColor = colorname[uniquearray(5, 0, colorname.length)[4]]['hex-code']
+    if (checkkeycode(e)) {
+        document.getElementById('clr1').style.backgroundColor = colorname[uniquearray(5, 0, colorname.length-1)[0]]['hex-code']
+        document.getElementById('clr2').style.backgroundColor = colorname[uniquearray(5, 0, colorname.length-1)[1]]['hex-code']
+        document.getElementById('clr3').style.backgroundColor = colorname[uniquearray(5, 0, colorname.length-1)[2]]['hex-code']
+        document.getElementById('clr4').style.backgroundColor = colorname[uniquearray(5, 0, colorname.length-1)[3]]['hex-code']
+        document.getElementById('clr5').style.backgroundColor = colorname[uniquearray(5, 0, colorname.length-1)[4]]['hex-code']
 
     }
 })
-function randomnumber(start, end) {
-    len = end - start + 1
-    number = Math.floor(Math.random() * (len + 1))
-    return number
-}
-function uniquearray(len, start, end) {
-    num = randomnumber(start, end)
-    a = []
-    while (a.length != len) {
-        if (a.filter(() => {
-            if (a.indexOf(num) == -1)
-                return true
-        })) {
-            a.push(num)
-        }
-    }
-    return a
-}
-function rgbToHsl(r, g, b){
-    r /= 255, g /= 255, b /= 255;
-    var max = Math.max(r, g, b), min = Math.min(r, g, b);
-    var h, s, l = (max + min) / 2;
+document.getElementById('color-1').addEventListener('click', () => {
+    // document.body.removeEventListener('keypress', initialwindowiterate)
+    document.getElementsByClassName('drop-down')[0].style.visibility = 'hidden'
+    randomhex = colorname[randomnumber(0, colorname.length - 1)]['hex-code']
+    randomrgb = hextorgb(randomhex)
+    randomhsl = rgbToHsl(randomrgb)
+    Monoarray = genrateMonochromatic(rgbToHsl(hextorgb(colorname[randomnumber(0, colorname.length - 1)]['hex-code'])), 4)
 
-    if(max == min){
-        h = s = 0; // achromatic
-    }else{
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch(max){
-            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-            case g: h = (b - r) / d + 2; break;
-            case b: h = (r - g) / d + 4; break;
+    document.getElementById('clr1').style.backgroundColor = `rgb(${Monoarray[0][0]}%,${Monoarray[0][1]}%,${Monoarray[0][2]}%)`
+    document.getElementById('clr2').style.backgroundColor = `rgb(${Monoarray[1][0]}%,${Monoarray[1][1]}%,${Monoarray[1][2]}%)`
+    document.getElementById('clr4').style.backgroundColor = `rgb(${Monoarray[2][0]}%,${Monoarray[2][1]}%,${Monoarray[2][2]}%)`
+    document.getElementById('clr5').style.backgroundColor = `rgb(${Monoarray[3][0]}%,${Monoarray[3][1]}%,${Monoarray[3][2]}%)`
+    document.getElementById('clr3').style.backgroundColor = randomhex
+    document.body.addEventListener('keypress', (e1) => {
+        if (checkkeycode(e1)) {
+            Monoarray = genrateMonochromatic(rgbToHsl(hextorgb(colorname[randomnumber(0, colorname.length - 1)]['hex-code'])), 4)
+            document.getElementById('clr1').style.backgroundColor = `rgb(${Monoarray[0][0]}%,${Monoarray[0][1]}%,${Monoarray[0][2]}%)`
+            document.getElementById('clr2').style.backgroundColor = `rgb(${Monoarray[1][0]}%,${Monoarray[1][1]}%,${Monoarray[1][2]}%)`
+            document.getElementById('clr4').style.backgroundColor = `rgb(${Monoarray[2][0]}%,${Monoarray[2][1]}%,${Monoarray[2][2]}%)`
+            document.getElementById('clr5').style.backgroundColor = `rgb(${Monoarray[3][0]}%,${Monoarray[3][1]}%,${Monoarray[3][2]}%)`
+            document.getElementById('clr3').style.backgroundColor = randomhex
         }
-        h /= 6;
-    }
 
-    return [h, s, l];
-}
+    })
+})
+document.getElementById('color-2').addEventListener('click', () => {
+
+    // document.body.removeEventListener('keypress', initialwindowiterate)
+    document.getElementsByClassName('drop-down')[0].style.visibility = 'hidden'
+    randomhex = colorname[randomnumber(0, colorname.length - 1)]['hex-code']
+    randomrgb = hextorgb(randomhex)
+    randomhsl = rgbToHsl(randomrgb)
+    analogous_scheme = analogous(rgbToHsl(hextorgb(colorname[randomnumber(0, colorname.length - 1)]['hex-code'])), 4)
+    document.getElementById('clr1').style.backgroundColor = `rgb(${analogous_scheme[0][0]}%,${analogous_scheme[0][1]}%,${analogous_scheme[0][2]}%)`
+    document.getElementById('clr2').style.backgroundColor = `rgb(${analogous_scheme[2][0]}%,${analogous_scheme[2][1]}%,${analogous_scheme[2][2]}%)`
+    document.getElementById('clr4').style.backgroundColor = `rgb(${analogous_scheme[1][0]}%,${analogous_scheme[1][1]}%,${analogous_scheme[1][2]}%)`
+    document.getElementById('clr5').style.backgroundColor = `rgb(${analogous_scheme[3][0]}%,${analogous_scheme[3][1]}%,${analogous_scheme[3][2]}%)`
+    document.getElementById('clr3').style.backgroundColor = randomhex
+    document.body.addEventListener('keypress', (e) => {
+        if (checkkeycode(e)) {
+            randomhex = colorname[randomnumber(0, colorname.length - 1)]['hex-code']
+            randomrgb = hextorgb(randomhex)
+            randomhsl = rgbToHsl(randomrgb)
+            analogous_scheme = analogous(rgbToHsl(hextorgb(colorname[randomnumber(0, colorname.length - 1)]['hex-code'])), 4)
+            document.getElementById('clr1').style.backgroundColor = `rgb(${analogous_scheme[0][0]}%,${analogous_scheme[0][1]}%,${analogous_scheme[0][2]}%)`
+            document.getElementById('clr2').style.backgroundColor = `rgb(${analogous_scheme[2][0]}%,${analogous_scheme[2][1]}%,${analogous_scheme[2][2]}%)`
+            document.getElementById('clr4').style.backgroundColor = `rgb(${analogous_scheme[1][0]}%,${analogous_scheme[1][1]}%,${analogous_scheme[1][2]}%)`
+            document.getElementById('clr5').style.backgroundColor = `rgb(${analogous_scheme[3][0]}%,${analogous_scheme[3][1]}%,${analogous_scheme[3][2]}%)`
+            document.getElementById('clr3').style.backgroundColor = randomhex
+        }
+    })
+})

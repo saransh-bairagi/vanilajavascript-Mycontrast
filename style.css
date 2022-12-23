@@ -63,7 +63,7 @@ header div a{
     align-items: center;
     padding: 0px 40px;
     height: 10vh;
-    background-image: linear-gradient(360deg, rgba(0, 0, 0,0.4), rgba(50, 50, 50, 0.6));
+    background-image: linear-gradient(360deg, #00000066, rgba(50, 50, 50, 0.6));
     z-index: 1;
 
 }
@@ -74,7 +74,7 @@ p.h3{
     line-height: 24px;
 }
 p.h3 span{
-    color: grey;
+    color: hsl(0, 0%, 50%);
     font-weight: 600;
     font-style: italic;
     font-size: 16px;

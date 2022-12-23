@@ -17,14 +17,16 @@ function uniquearray(len, start, end) {
     }
     return a
 }
-hextorgb = (hex) => [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)]
+hextorgb = (hex) =>  {
+    return [parseInt(hex.slice(1, 3), 16), parseInt(hex.slice(3, 5), 16), parseInt(hex.slice(5, 7), 16)]
+}
 
-rgbToHsl = ([r, g, b]) => {
-    if (r!=255&0,g!=255&0,b!=255&0) {
+rgbToHsl = function([r, g, b]){
+    if ((r!=255 &g!=255 &b!=255)||(r!=0 &g!=0 &b!=0)) {
         M = Math.max(r,g,b)
-        m = Math.min(r, g, b)
-        d = (M - m) / 255
-        L = (M + m) / 510
+        m = Math.min(r, g,b)
+        d = (M - m)/255
+        L = (M + m)/510
         //     S = d/[1 - |2L-1|]        if L > 0
         // S = 0                         if L = 0
         switch (L) {
@@ -62,25 +64,15 @@ function genrateMonochromatic([h,s,l],iterations){
     return result
 }
 
-function rgbToHsl(r, g, b){
-    r /= 255, g /= 255, b /= 255;
-    var max = Math.max(r, g, b), min = Math.min(r, g, b);
-    var h, s, l = (max + min) / 2;
-
-    if(max == min){
-        h = s = 0; // achromatic
-    }else{
-        var d = max - min;
-        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-        switch(max){
-            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-            case g: h = (b - r) / d + 2; break;
-            case b: h = (r - g) / d + 4; break;
-        }
-        h /= 6;
-    }
-
-    return [h, s, l];
+hslToHex=function([h, s, l]){
+    l /= 100;
+    const a = s * Math.min(l, 1 - l) / 100;
+    const f = n => {
+      const k = (n + h / 30) % 12;
+      const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+      return Math.round(255 * color).toString(16).padStart(2, '0');   // convert to Hex and prefix "0" if needed
+    };
+    return `#${f(0)}${f(8)}${f(4)}`;
 }
 
 function modulusMax(max, a) {
@@ -113,4 +105,3 @@ function triadic([h,s,l]){
 function tetradic([h,s,l]){
     return [[modulusMax(360,h-90),s,l],[modulusMax(360,h+90),s,l],[modulusMax(360,h-180),s,l]]
 }
-
