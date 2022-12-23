@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="index.html">MyContrasts</a>
+        </div>
+    </header>
+    
+    <div class="color-box">
+        <div class="nav-2">
+            <p class="h3">Press <span>&#60;SPACE&#62;</span> to generate a <b>Meaningful</b> Palette</p>
+            <div id="type">
+                <a class='h4' onmouseenter="typehover()" onmouseleave="typehover2()" >Type <span>&gt;</span></a>
+                <div onmouseenter="typehover()" onmouseleave="typehover2()" class="drop-down">
+                    <div id="color-1" class="drop-down-m">
+                        <p class="h-m-1">Monochromatic</p>
+                        <p id='cm1' class="c-m-1 c-m">Colors generating from single Hue</p>
+                    </div>
+                    <div id="color-2" class="drop-down-m">
+                        <p class="h-m-1">Analogous</p>
+                        <p id='cm2' class="c-m-1 c-m">Colors generating from sibling Hue</p>
+                    </div>
+                    <div id="color-3" class="drop-down-m">
+                        <p class="h-m-1">Complementary</p>
+                        <p id='cm3' class="c-m-1 c-m">Opposite in Color Wheel</p>
+                    </div>
+                    <div id="color-4" class="drop-down-m">
+                        <p class="h-m-1">Split Complementary</p>
+                        <p id='cm4' class="c-m-1 c-m">Color which is Sibling of Complementary Color</p>
+                    </div>
+                    <div id="color-5" class="drop-down-m">
+                        <p class="h-m-1">Triadic</p>
+                        <p id='cm5' class="c-m-1 c-m">Colors forming equilateral triangle in Color Scheme</p>
+                    </div>
+                    <div id="color-6" class="drop-down-m">
+                        <p class="h-m-1">Tetradic</p>
+                        <p id='cm6' class="c-m-1 c-m">Colors forming rectangle in color wheel </p>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+
+        <div id="clr1" class="rel"><div class="color-overlay abs">
+            <p class="color-stats1"></p>
+        </div></div>
+        <div id="clr2" class="rel"><div class="color-overlay abs">
+            <p class="color-stats2"></p>
+        </div></div>
+        <div id="clr3" class="rel"><div class="color-overlay abs">
+            <p class="color-stats3"></p>
+        </div></div>
+        <div id="clr4" class="rel"><div class="color-overlay abs">
+            <p class="color-stats4"></p>
+        </div></div>
+        <div id="clr5" class="rel"><div class="color-overlay abs">
+            <p class="color-stats5"></p>
+        </div></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
