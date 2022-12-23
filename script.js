@@ -83,3 +83,23 @@ document.getElementById('color-2').addEventListener('click', () => {
         }
     })
 })
+document.getElementById('color-3').addEventListener('click',()=>{
+    document.getElementsByClassName('color-box')[0].style['grid-template-rows']='5fr 4fr'
+    document.getElementsByClassName('drop-down')[0].style.visibility = 'hidden'
+    randomhex = colorname[randomnumber(0, colorname.length - 1)]['hex-code']
+    randomrgb = hextorgb(randomhex)
+    randomhsl = rgbToHsl(randomrgb)
+    document.getElementById('clr1').style.backgroundColor = randomhex
+    document.getElementById('clr2').style.backgroundColor = `rgb(${complementary(randomhsl)[0]}%,${complementary(randomhsl)[1]}%,${complementary(randomhsl)[2]}%)`
+    document.body.addEventListener('keypress',(e)=>{
+        if(checkkeycode){
+            randomhex = colorname[randomnumber(0, colorname.length - 1)]['hex-code']
+            randomrgb = hextorgb(randomhex)
+            randomhsl = rgbToHsl(randomrgb)
+            document.getElementById('clr1').style.backgroundColor = randomhex
+            document.getElementById('clr2').style.backgroundColor = `rgb(${complementary(randomhsl)[0]}%,${complementary(randomhsl)[1]}%,${complementary(randomhsl)[2]}%)`
+
+        }
+    })
+
+})
