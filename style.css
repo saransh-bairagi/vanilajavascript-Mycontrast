@@ -191,23 +191,23 @@ a.h4{
 
 }
 #clr1{
-    background-color: red;
+    background-color: rgb(198, 198, 198);
     box-shadow: inset 0px -4px 3px rgba(112, 112, 112, 0.3);
 }
 #clr2{
-    background-color: rgb(0, 255, 119);
+    background-color: rgb(100, 174, 135);
     box-shadow: inset 0px -4px 3px rgba(112, 112, 112, 0.3);
 }
 #clr3{
-    background-color: rgb(68, 0, 255);
+    background-color: rgb(103, 82, 159);
     box-shadow: inset 0px -4px 3px rgba(112, 112, 112, 0.3);
 }
 #clr4{
-    background-color: rgb(255, 115, 0);
+    background-color: rgb(255, 145, 0);
     box-shadow: inset 0px -4px 3px rgba(112, 112, 112, 0.3);
 }
 #clr5{
-    background-color: rgb(0, 136, 255);
+    background-color: rgb(78, 129, 173);
     box-shadow: inset 0px -4px 3px rgba(112, 112, 112, 0.3);
 }
 .rel{
